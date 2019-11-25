@@ -1,0 +1,17 @@
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.exe.config
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.exe
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.pdb
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.csprojResolveAssemblyReference.cache
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\App.g.cs
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin_MarkupCompile.cache
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin_MarkupCompile.lref
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.g.resources
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.Properties.Resources.resources
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.csproj.GenerateResource.Cache
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.csproj.CoreCompileInputs.cache
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.exe
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.pdb
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\MainWindow.g.cs
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\MainWindow.baml
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\Home.g.cs
+D:\Code\Csharp\QuanLyCanTin\QuanLyCanTin\obj\Debug\Home.baml
