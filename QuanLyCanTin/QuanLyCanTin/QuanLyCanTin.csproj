@@ -54,6 +54,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SanPham.cs" />
+    <Compile Include="SanPhamDAO.cs" />
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -66,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DBConnect.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\sting.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\comnam.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\coca.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

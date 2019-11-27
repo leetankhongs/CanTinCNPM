@@ -26,15 +26,11 @@ namespace QuanLyCanTin
             InitializeComponent();
         }
 
-        public class Product
+        List<SanPham> dsSanPham = new List<SanPham>();
+
+        private void loadSanPham()
         {
-            public String CodeProduct { get; set; }
-            public String NameProduct { get; set; }
-            public String TypeProduct { get; set; }
-            public int Cost { get; set; }
-            public bool Favorite { get; set; }
-            public bool isDelete { get; set; }
-            public String image { get; set; }
+            dsSanPham = SanPhamDAO.Instance.GetListFood();
         }
 
         public class ProductOder : INotifyPropertyChanged
@@ -137,7 +133,7 @@ namespace QuanLyCanTin
             button.BorderBrush = new SolidColorBrush(Colors.Transparent);
             button.Content = stackPanel;
             button.Tag = new Tuple<int>(stt);
-            button.Click += Button_Click;
+            //button.Click += Button_Click;
 
             Border border = new Border();
             border.Margin = new Thickness(0, 8, 0, 8);
@@ -151,10 +147,10 @@ namespace QuanLyCanTin
             return border;
         }
 
-        List<Product> listProduct = new List<Product>();
+        //List<SanPham> listProduct = new List<SanPham>();
         BindingList<ProductOder> listProductOrder = new BindingList<ProductOder>();
         List<Border> listProductBorder = new List<Border>();
-        int TotalMoney = 0;
+        //int TotalMoney = 0;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -165,98 +161,103 @@ namespace QuanLyCanTin
             {
 
             }
-            else
-                this.Close();
+            else this.Close();
 
-            Product newProduct1 = new Product() { CodeProduct = "123", Cost = 120000, Favorite = true, isDelete = false, NameProduct = "Cơm chiên", TypeProduct = "Food", image = "/Images/comchien.jpeg" };
-            Product newProduct2 = new Product() { CodeProduct = "456", Cost = 240000, Favorite = true, isDelete = false, NameProduct = "Cơm Nấm", TypeProduct = "Food", image = "/Images/comchien.jpeg" };
-            Product newProduct3 = new Product() { CodeProduct = "789", Cost = 100000, Favorite = true, isDelete = false, NameProduct = "Sting", TypeProduct = "Drink", image = "/Images/sting.jpg" };
-            Product newProduct4 = new Product() { CodeProduct = "101", Cost = 80000, Favorite = true, isDelete = false, NameProduct = "Coca", TypeProduct = "Drink", image = "/Images/sting.jpg" };
+            loadSanPham();
 
-            listProduct.Add(newProduct1);
-            listProduct.Add(newProduct2);
-            listProduct.Add(newProduct3);
-            listProduct.Add(newProduct4);
+            MessageBox.Show(dsSanPham[0].TenSanPham + "\n" + dsSanPham[1].ImgUrl);
 
-            for (int i = 0; i < listProduct.Count(); i++)
+            for (int i = 0; i < dsSanPham.Count; i++)
             {
-                Border border = CreateItemProduct(listProduct[i].image, listProduct[i].NameProduct, i);
-                listProductBorder.Add(border);
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri(dsSanPham[i].ImgUrl, UriKind.Relative));
+                img.Width = 100;
+                img.Height = 100;
+                Canvas.SetTop(img, 20);
+                Canvas.SetLeft(img, 20 + i * 120);
+                canvas.Children.Add(img);
+                
             }
 
-            for (int i = 0; i < listProduct.Count(); i++)
-            {
-                if (listProduct[i].TypeProduct.CompareTo("Food") == 0)
-                {
-                    Uni.Children.Add(listProductBorder[i]);
-                }
-            }
+            //for (int i = 0; i < dsSanPham.Count(); i++)
+            //{
+            //    Border border = CreateItemProduct(dsSanPham[i].ImgUrl, dsSanPham[i].TenSanPham, i);
+            //    listProductBorder.Add(border);
+            //}
 
-            ListOrder.ItemsSource = listProductOrder;
+            //for (int i = 0; i < dsSanPham.Count(); i++)
+            //{
+            //    if (dsSanPham[i].LoaiSanPham.CompareTo("Thức ăn") == 0)
+            //    {
+            //        Uni.Children.Add(listProductBorder[i]);
+            //    }
+            //}
+
+            //ListOrder.ItemsSource = listProductOrder;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            var index = (button.Tag as Tuple<int>).Item1;
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var button = sender as Button;
+        //    var index = (button.Tag as Tuple<int>).Item1;
 
-            bool exist = false;
-            int indexOrder = 0;
+        //    bool exist = false;
+        //    int indexOrder = 0;
 
-            for (int i = 0; i < listProductOrder.Count; i++)
-            {
-                if (listProduct[index].CodeProduct.CompareTo(listProductOrder[i].CodeProduct) == 0)
-                {
-                    exist = true;
-                    indexOrder = i;
-                    break;
-                }
-            }
+        //    for (int i = 0; i < listProductOrder.Count; i++)
+        //    {
+        //        if (listProduct[index].CodeProduct.CompareTo(listProductOrder[i].CodeProduct) == 0)
+        //        {
+        //            exist = true;
+        //            indexOrder = i;
+        //            break;
+        //        }
+        //    }
 
-            if (exist == false)
-            {
-                ProductOder productOrder = new ProductOder() { CodeProduct = listProduct[index].CodeProduct, Cost = listProduct[index].Cost, NameProduct = listProduct[index].NameProduct, Count = 1, Total = listProduct[index].Cost };
-                listProductOrder.Add(productOrder);
-                TotalMoney += listProduct[index].Cost;
-                TongTien.Text = TotalMoney.ToString();
-            }
-            else
-            {
-                listProductOrder[indexOrder].Count++;
-                TotalMoney += listProductOrder[indexOrder].Cost;
-                listProductOrder[indexOrder].Total += listProductOrder[indexOrder].Cost;
-                TongTien.Text = TotalMoney.ToString();
-            }
+        //    if (exist == false)
+        //    {
+        //        ProductOder productOrder = new ProductOder() { CodeProduct = listProduct[index].CodeProduct, Cost = listProduct[index].Cost, NameProduct = listProduct[index].NameProduct, Count = 1, Total = listProduct[index].Cost };
+        //        listProductOrder.Add(productOrder);
+        //        TotalMoney += listProduct[index].Cost;
+        //        TongTien.Text = TotalMoney.ToString();
+        //    }
+        //    else
+        //    {
+        //        listProductOrder[indexOrder].Count++;
+        //        TotalMoney += listProductOrder[indexOrder].Cost;
+        //        listProductOrder[indexOrder].Total += listProductOrder[indexOrder].Cost;
+        //        TongTien.Text = TotalMoney.ToString();
+        //    }
 
-        }
+        //}
 
 
 
 
         private void Drinkbtn_Click(object sender, RoutedEventArgs e)
         {
-            Uni.Children.Clear();
+            //Uni.Children.Clear();
 
-            for (int i = 0; i < listProduct.Count(); i++)
-            {
-                if (listProduct[i].TypeProduct.CompareTo("Drink") == 0)
-                {
-                    Uni.Children.Add(listProductBorder[i]); ;
-                }
-            }
+            //for (int i = 0; i < listProduct.Count(); i++)
+            //{
+            //    if (listProduct[i].TypeProduct.CompareTo("Drink") == 0)
+            //    {
+            //        Uni.Children.Add(listProductBorder[i]); ;
+            //    }
+            //}
         }
 
         private void Foodbtn_Click(object sender, RoutedEventArgs e)
         {
-            Uni.Children.Clear();
+            //Uni.Children.Clear();
 
-            for (int i = 0; i < listProduct.Count(); i++)
-            {
-                if (listProduct[i].TypeProduct.CompareTo("Food") == 0)
-                {
-                    Uni.Children.Add(listProductBorder[i]);
-                }
-            }
+            //for (int i = 0; i < listProduct.Count(); i++)
+            //{
+            //    if (listProduct[i].TypeProduct.CompareTo("Food") == 0)
+            //    {
+            //        Uni.Children.Add(listProductBorder[i]);
+            //    }
+            //}
 
         }
 
@@ -267,40 +268,40 @@ namespace QuanLyCanTin
 
         private void ClearOrder_Click(object sender, RoutedEventArgs e)
         {
-            var item = (sender as FrameworkElement).DataContext;
-            int index = ListOrder.Items.IndexOf(item);
+            //var item = (sender as FrameworkElement).DataContext;
+            //int index = ListOrder.Items.IndexOf(item);
 
-            TotalMoney -= listProductOrder[index].Total;
-            TongTien.Text = TotalMoney.ToString();
+            //TotalMoney -= listProductOrder[index].Total;
+            //TongTien.Text = TotalMoney.ToString();
 
-            listProductOrder.RemoveAt(index);
+            //listProductOrder.RemoveAt(index);
 
         }
 
         private void Searchbtn_Click(object sender, RoutedEventArgs e)
         {
-            String textSearch = Searchtb.Text;
+            //String textSearch = Searchtb.Text;
 
-            Uni.Children.Clear();
+            //Uni.Children.Clear();
 
-            for(int i=0; i< listProduct.Count; i++)
-            {
-                if(listProduct[i].NameProduct.Contains(textSearch) )
-                    Uni.Children.Add(listProductBorder[i]); 
-            }
+            //for (int i = 0; i < listProduct.Count; i++)
+            //{
+            //    if (listProduct[i].NameProduct.Contains(textSearch))
+            //        Uni.Children.Add(listProductBorder[i]);
+            //}
         }
 
         private void Searchtb_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            String textSearch = Searchtb.Text;
+            //String textSearch = Searchtb.Text;
 
-            Uni.Children.Clear();
+            //Uni.Children.Clear();
 
-            for (int i = 0; i < listProduct.Count; i++)
-            {
-                if (listProduct[i].NameProduct.Contains(textSearch))
-                    Uni.Children.Add(listProductBorder[i]);
-            }
+            //for (int i = 0; i < listProduct.Count; i++)
+            //{
+            //    if (listProduct[i].NameProduct.Contains(textSearch))
+            //        Uni.Children.Add(listProductBorder[i]);
+            //}
         }
     }
 }
