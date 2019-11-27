@@ -25,25 +25,56 @@ namespace QuanLyCanTin
             InitializeComponent();
         }
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var screen = new Home();
-            this.Hide();
-            if (screen.ShowDialog() == true)
+            var screen = new Login();
+            var result = screen.ShowDialog();
+
+            if (result == true)
             {
-                // do something here if needed
 
             }
-            this.Show();
+            else
+                this.Close();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri("/Images/comchien.jpeg", UriKind.Relative));
+                img.Width = 100;
+                img.Height = 100;
+                StackPanel stackPanel = new StackPanel();
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = "COM CHIEN";
+                textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+                stackPanel.Children.Add(img);
+                stackPanel.Children.Add(textBlock);
+                stackPanel.Background = new SolidColorBrush(Colors.Transparent);
+
+                Button button = new Button();
+                button.Margin = new Thickness(10, 5, 10, 5);
+                button.BorderThickness = new Thickness(0);
+                button.Background = new SolidColorBrush(Colors.Transparent);
+                button.BorderBrush = new SolidColorBrush(Colors.Transparent);
+                button.Content = stackPanel;
+
+                Border border = new Border();
+                border.Child = button;
+                border.BorderThickness = new Thickness(5, 10, 15, 20);
+                border.Background = new SolidColorBrush(Colors.LightGray);
+                border.CornerRadius = new CornerRadius(20);
+                Uni.Children.Add(border);
+            }
         }
 
-        private void exitButton_Click(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Hiện thông báo, nhấn OK thì đóng chương trình
-            if (MessageBox.Show("Bạn có chắc là muốn thoát chương trình không?", "Thông báo", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {
-                this.Close();
-            }
+
+        }
+
+        private void lvUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
