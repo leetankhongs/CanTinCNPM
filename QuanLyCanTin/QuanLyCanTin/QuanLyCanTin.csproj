@@ -58,6 +58,9 @@
     <Compile Include="ComBoDAO.cs" />
     <Compile Include="NhanVien.cs" />
     <Compile Include="NhanVienDAO.cs" />
+    <Compile Include="Pay.xaml.cs">
+      <DependentUpon>Pay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SanPham.cs" />
     <Compile Include="SanPhamDAO.cs" />
     <Page Include="Login.xaml">
@@ -80,6 +83,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
