@@ -15,7 +15,7 @@
 
             <StackPanel Margin="5,5,10,5" Orientation="Horizontal" Canvas.Top="35" Canvas.Left="10">
                 <Label Content="Mật khẩu" HorizontalAlignment="Left" Height="30" Width="105" FontSize="14"/>
-                <TextBox x:Name="passwordTextBox" Height="30" Text="" FontSize="14" Width="250"/>
+                <PasswordBox x:Name="passwordBox" Height="30" FontSize="14" Width="250"/>
             </StackPanel>
             <StackPanel Margin="195,5,10,0" Orientation="Horizontal" Canvas.Top="35" Canvas.Left="10">
                 <Button Name="loginButton" Margin="0 0 5 0" Content="Đăng nhập" Width="80" Height="25" Click="loginButton_Click"></Button>

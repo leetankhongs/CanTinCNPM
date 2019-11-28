@@ -23,6 +23,12 @@ namespace QuanLyCanTin
         {
             InitializeComponent();
         }
+
+        private bool login(string username, string password)
+        {
+            return NhanVienDAO.Instance.Login(username, password);
+        }
+
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             // Hiện thông báo, nhấn OK thì đóng chương trình
@@ -32,10 +38,22 @@ namespace QuanLyCanTin
                 this.Close();
             }
         }
+
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
-            this.Close();
+            string userName = usernameTextBox.Text;
+            string passWord = passwordBox.Password;
+            if (login(userName, passWord))
+            {
+                MessageBox.Show("Đăng nhập thành công!!!");
+                DialogResult = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
+            }
+
             //var screen = new Home();
             //this.Hide();
             //if (screen.ShowDialog() == true)

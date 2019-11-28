@@ -26,12 +26,19 @@ namespace QuanLyCanTin
             InitializeComponent();
         }
 
+        // lấy danh sách sản phẩm
         List<SanPham> dsSanPham = new List<SanPham>();
-
         private void loadSanPham()
         {
             dsSanPham = SanPhamDAO.Instance.GetListFood();
         }
+
+        // lấy danh sách combo
+        List<ComBo> dsComBo = new List<ComBo>();
+        private void loadComBo()
+        {
+            dsComBo = ComBoDAO.Instance.GetListComBo();
+        }     
 
         public class ProductOder : INotifyPropertyChanged
         {
@@ -155,22 +162,32 @@ namespace QuanLyCanTin
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var screen = new Login();
-            var result = screen.ShowDialog();
 
-            if (result == true)
+            if (screen.ShowDialog() == false)
             {
-
+                this.Close();
+                return;
             }
-            else this.Close();
-
+            
             loadSanPham();
+            loadComBo();
 
+            //MessageBox.Show(dsSanPham[0].TenSanPham + "\n" + dsSanPham[1].ImgUrl);
 
+            //Test đọc hết dữ liệu SẢN PHẨM
+            //for (int i = 0; i < dsSanPham.Count; i++)
+            //{
+            //    MessageBox.Show("Mã sản phẩm: " + dsSanPham[i].MaSanPham + " - Tên sản phẩm: " + dsSanPham[i].TenSanPham);
+            //}
 
+            //Test đọc hết dữ liệu COMBO
+            //for (int i = 0; i < dsComBo.Count; i++)
+            //{
+            //    MessageBox.Show("Mã combo: " + dsComBo[i].MaComBo + " - Tên combo: " + dsComBo[i].TenComBo + " - Giá combo: " + dsComBo[i].GiaComBo);
+            //}
 
             for (int i = 0; i < dsSanPham.Count(); i++)
             {
-
                 if(dsSanPham[i].IsDelete == false)
                 {
                     Border border = CreateItemProduct(dsSanPham[i].ImgUrl, dsSanPham[i].TenSanPham, i);
@@ -296,30 +313,6 @@ namespace QuanLyCanTin
             //    if (listProduct[i].NameProduct.Contains(textSearch))
             //        Uni.Children.Add(listProductBorder[i]);
             //}
-        }
-
-        private void Favorite_Product_Click(object sender, RoutedEventArgs e)
-        {
-            Uni.Children.Clear();
-
-            for (int i = 0; i < dsSanPham.Count(); i++)
-            {
-                if (dsSanPham[i].YeuThich == true)
-                {
-                    Uni.Children.Add(listProductBorder[i]);
-                }
-            }
-        }
-
-        private void Login_Click(object sender, RoutedEventArgs e)
-        {
-            var screen = new Login();
-            var result = screen.ShowDialog();
-
-            if (result == true)
-            {
-
-            }
         }
     }
 }

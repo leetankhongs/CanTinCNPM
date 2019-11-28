@@ -28,7 +28,7 @@
                         <Image Source="/Images/users.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                     </StackPanel>
                 </Button>
-                <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0" Name="Login" Click="Login_Click">
+                <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
                     <Image Source="/Images/login.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
             </StackPanel>
@@ -36,7 +36,7 @@
 
         <StackPanel DockPanel.Dock="Left"  Width="800" >
             <StackPanel Orientation="Horizontal" Height="40" Margin="0 10 0 5" >
-                <Button Width="200" BorderBrush="Black" BorderThickness="3" Name="Favorite_Product" Click="Favorite_Product_Click">
+                <Button Width="200" BorderBrush="Black" BorderThickness="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/favorite.png" RenderOptions.BitmapScalingMode="HighQuality" Height="30" Width="30" Margin="0 0 20 0"/>
                         <TextBlock Text="YÊU THÍCH" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
@@ -57,7 +57,7 @@
                 <Button Width="200" BorderBrush="Black" BorderThickness="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/star.png" RenderOptions.BitmapScalingMode="HighQuality" Height="30" Width="30" Margin="0 0 20 0"/>
-                        <TextBlock Text="Combo" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                        <TextBlock Text="Yêu thích" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -67,12 +67,10 @@
                 </Border>
                 <Button Content="Tìm kiếm" Width="150" FontSize="20" FontWeight="Bold" Name="Searchbtn" Click="Searchbtn_Click"></Button>
             </StackPanel>
-            <Grid DockPanel.Dock="Bottom" Height="520">
-                <ScrollViewer Margin="0,0,0,-99" >
-                    <UniformGrid Columns="3" Name="Uni">
-                    </UniformGrid>
-                </ScrollViewer>
-            </Grid>
+            <ScrollViewer Margin="0,0,0,-99" >
+                <UniformGrid Columns="3" Name="Uni">
+                </UniformGrid>
+            </ScrollViewer>
         </StackPanel>
         <StackPanel DockPanel.Dock="Right" Background="#FF75D3E9" >
             <ListView Margin="0 10 0 0" Name="ListOrder"  Width="472" Height="618" Background="Transparent" BorderThickness="0" SelectionChanged="FileListView_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False">

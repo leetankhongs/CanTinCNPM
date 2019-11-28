@@ -8,9 +8,11 @@ GO
 Create table NhanVien(
 	MaNV nvarchar(8) primary key not null,
 	HoTen nvarchar(32),
-	SDT nvarchar(11),
+	SDT varchar(11),
 	DiaChi nvarchar(100),
-	Luong Int
+	Luong int,
+	Username varchar(30),
+	Password varchar(100)
 );
 
 
@@ -63,6 +65,7 @@ alter table ChiTietHoaDon add constraint FK_SanPham_ChiTietHoaDon foreign key (M
 alter table ChiTietComBo add constraint FK_ComBo_ChiTietComBo foreign key (MaComBo) references ComBo(MaComBo);
 alter table ChiTietComBo add constraint FK_SanPham_ChiTietComBo foreign key (MaSanPham) references SanPham(MaSanPham);
 
+
 INSERT INTO LoaiSanPham(MaLoaiSP,TenLoaiSP)
 VALUES
 	('001', N'Thức ăn'),
@@ -70,11 +73,11 @@ VALUES
 
 
 Insert into NhanVien Values 
-	('NV000001','Lê Tấn Hưng','0963214587','135b Đường Trần Hưng Đạo, Phường Cầu Ông Lãnh, Quận 1, Hồ Chí Minh',5600000),
-	('NV000002','Lê Đào Nhật Thiện','0985214578','85 Đường Trần Hưng Đạo, Phường 7, Quận 5, Hồ Chí Minh',5600000),
-	('NV000003','Bùi Đỗ Huy','0932154754','12 Trường Chinh,Phường 12, Tân Bình, Hồ Chí Minh',5400000),
-	('NV000004','Phan Thị Hường','0912358746','36 Cao Thắng, phường 5, Quận 3, Hồ Chí Minh',6200000),
-	('NV000005','Nguyễn Thị Hồng','0952147584','25 Phạm Văn Đồng, Phường 3, Gò Vấp, Hồ Chí Minh',5800000);
+	('NV000001','Lê Tấn Hưng','0963214587','135b Đường Trần Hưng Đạo, Phường Cầu Ông Lãnh, Quận 1, Hồ Chí Minh',5600000,'hung123','hung123'),
+	('NV000002','Lê Đào Nhật Thiện','0985214578','85 Đường Trần Hưng Đạo, Phường 7, Quận 5, Hồ Chí Minh',5600000,'thien123','thien123'),
+	('NV000003','Bùi Đỗ Huy','0932154754','12 Trường Chinh,Phường 12, Tân Bình, Hồ Chí Minh',5400000,'huy123','huy123'),
+	('NV000004','Phan Thị Hường','0912358746','36 Cao Thắng, phường 5, Quận 3, Hồ Chí Minh',6200000,'huong123','huong123'),
+	('NV000005','Nguyễn Thị Hồng','0952147584','25 Phạm Văn Đồng, Phường 3, Gò Vấp, Hồ Chí Minh',5800000,'hong123','hong123');
 
 Insert into SanPham values
 	('SP00001','Cơm tự chọn loại 1','001','Images/IMG00001.jpeg',20000,0,0),
@@ -185,3 +188,10 @@ Insert into ChiTietComBo values
 	('CB002','SP00008'),
 	('CB003','SP00004'),
 	('CB003','SP00006');
+GO
+CREATE PROC Login
+@userName nvarchar(30), @passWord nvarchar(100)
+AS
+BEGIN
+	SELECT * FROM NhanVien WHERE Username = @username AND Password = @password
+END
