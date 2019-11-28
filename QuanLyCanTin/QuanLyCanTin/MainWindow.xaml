@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyCanTin"
         mc:Ignorable="d"
-        Title="Menu" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+        Title="Menu" Height="800" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top" Name="Header" Background="#FF3FB5FE" Height="70" >
+
+        <DockPanel DockPanel.Dock="Top" Name="Header" Background="#FF3FB5FE" Height="50" >
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
                 <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
-                    <Image Source="/Images/home.png" RenderOptions.BitmapScalingMode="HighQuality" Height="50" Width="50"/>
+                    <Image Source="/Images/home.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
                 <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
                     <TextBlock Text="Order" FontSize="30" FontWeight="Bold"/>
@@ -19,73 +21,115 @@
                     <TextBlock Text="Sơ đồ" FontSize="30" FontWeight="Bold"/>
                 </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="0,0,0,0.4" HorizontalAlignment="Right" >
-
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 10 0"  >
                 <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="About us" FontSize="30" FontWeight="Bold" Margin="0 0 50 0"/>
-                        <Image Source="/Images/users.png" RenderOptions.BitmapScalingMode="HighQuality" Height="50" Width="50"/>
+                        <Image Source="/Images/users.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                     </StackPanel>
                 </Button>
-                <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
-                    <Image Source="/Images/login.png" RenderOptions.BitmapScalingMode="HighQuality" Height="50" Width="50"/>
+                <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0" Name="Login" Click="Login_Click">
+                    <Image Source="/Images/login.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
             </StackPanel>
         </DockPanel>
 
         <StackPanel DockPanel.Dock="Left"  Width="800" >
-            <StackPanel Orientation="Horizontal" Height="50" Margin="0 10 0 5" >
-                <Button Width="200" BorderBrush="Black" BorderThickness="3">
+            <StackPanel Orientation="Horizontal" Height="40" Margin="0 10 0 5" >
+                <Button Width="200" BorderBrush="Black" BorderThickness="3" Name="Favorite_Product" Click="Favorite_Product_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/favorite.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="50" Margin="0 0 20 0"/>
+                        <Image Source="/Images/favorite.png" RenderOptions.BitmapScalingMode="HighQuality" Height="30" Width="30" Margin="0 0 20 0"/>
                         <TextBlock Text="YÊU THÍCH" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
-                <Button Width="200" BorderBrush="Black" BorderThickness="3">
+                <Button Width="200" BorderBrush="Black" BorderThickness="3" Name="Foodbtn" Click="Foodbtn_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/dish.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="50" Margin="0 0 20 0"/>
+                        <Image Source="/Images/dish.png" RenderOptions.BitmapScalingMode="HighQuality" Height="30" Width="30" Margin="0 0 20 0"/>
                         <TextBlock Text="MÓN ĂN" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
-                <Button Width="200" BorderBrush="Black" BorderThickness="3">
+                <Button Width="200" BorderBrush="Black" BorderThickness="3" Name="Drinkbtn" Click="Drinkbtn_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/drink.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="50"  Margin="0 0 20 0"/>
+                        <Image Source="/Images/drink.png" RenderOptions.BitmapScalingMode="HighQuality" Height="30" Width="30"  Margin="0 0 20 0"/>
                         <TextBlock Text="NƯỚC UỐNG" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <Button Width="200" BorderBrush="Black" BorderThickness="3">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/star.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="50" Margin="0 0 20 0"/>
-                        <TextBlock Text="Yêu thích" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                        <Image Source="/Images/star.png" RenderOptions.BitmapScalingMode="HighQuality" Height="30" Width="30" Margin="0 0 20 0"/>
+                        <TextBlock Text="Combo" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="50" Margin="0 5 0 10">
+            <StackPanel Orientation="Horizontal" Height="30" Margin="0 5 0 10">
                 <Border CornerRadius="25" Background="LightGray" Width="650" HorizontalAlignment="Center" >
-                    <TextBox Text="Search"  Background="{x:Null}" BorderThickness="0" HorizontalAlignment="Center" Margin="0 10" Width="600" TextAlignment="Left" FontSize="25" TextChanged="TextBox_TextChanged"></TextBox>
+                    <TextBox Text="Search"  Background="{x:Null}" BorderThickness="0" HorizontalAlignment="Center" Margin="0 1" Width="600" TextAlignment="Left" FontSize="20" Name="Searchtb" DataContextChanged="Searchtb_DataContextChanged" ></TextBox>
                 </Border>
-                <Button Content="Tìm kiếm" Width="150" FontSize="25" FontWeight="Bold" ></Button>
+                <Button Content="Tìm kiếm" Width="150" FontSize="20" FontWeight="Bold" Name="Searchbtn" Click="Searchbtn_Click"></Button>
             </StackPanel>
             <Grid DockPanel.Dock="Bottom" Height="520">
-                <ScrollViewer >
+                <ScrollViewer Margin="0,0,0,-99" >
                     <UniformGrid Columns="3" Name="Uni">
                     </UniformGrid>
                 </ScrollViewer>
             </Grid>
         </StackPanel>
         <StackPanel DockPanel.Dock="Right" Background="#FF75D3E9" >
-            <ListView Margin="0 10 0 0" Name="lvUsers" Height="500" Background="Transparent" BorderThickness="0" SelectionChanged="lvUsers_SelectionChanged" >
+            <ListView Margin="0 10 0 0" Name="ListOrder"  Width="472" Height="618" Background="Transparent" BorderThickness="0" SelectionChanged="FileListView_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Tên món" Width="250" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="SL" Width="50" DisplayMemberBinding="{Binding Count}" />
-                        <GridViewColumn Header="Thành tiền" Width="125" DisplayMemberBinding="{Binding Cost}"/>
-                        <GridViewColumn  Width="50" DisplayMemberBinding="{Binding Delete}" />
+                    <GridView >
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="Background" Value="#FF534DFB" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="Height" Value="40"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn Header="Tên món"  Width="225">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NameProduct}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="Black"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="SL" Width="50"  >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Count}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="Black"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Thành tiền" Width="125" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Total}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="Black"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn  Width="40"  >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="ClearOrder" Click="ClearOrder_Click" >
+                                        <Image Source="/Images/clear.png" />
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="TỔNG TIỀN" FontSize="20" FontWeight="Bold" Margin="200 0 0 0"/>
+                <TextBlock Text="TỔNG TIỀN: " FontSize="20" FontWeight="Bold" Margin="200 0 0 0"/>
+                <TextBlock Text="" Name="TongTien" FontSize="18" FontWeight="Bold" Margin="10 0 0 0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Border CornerRadius="15" Background="LightGray" Margin="180 0 0 0" Height="45" Padding="5">
@@ -96,7 +140,7 @@
                         </StackPanel>
                     </Button>
                 </Border>
-                <Border CornerRadius="15" Background="Blue" Margin="20 0 0 0" Height="45" Padding="5">
+                <Border CornerRadius="15" Background="#FF534DFB" Margin="20 0 0 0" Height="45" Padding="5">
                     <Button  Background="{x:Null}" BorderThickness="0">
                         <StackPanel Orientation="Horizontal" >
                             <Image Source="/Images/print.png" RenderOptions.BitmapScalingMode="HighQuality" Height="30" Width="30" Margin="0 0 10 0"/>
@@ -104,7 +148,6 @@
                         </StackPanel>
                     </Button>
                 </Border>
-
             </StackPanel>
         </StackPanel>
     </DockPanel>
