@@ -1,0 +1,16 @@
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.exe.config
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.exe
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.pdb
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.csprojAssemblyReference.cache
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\Login.g.cs
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\MainWindow.g.cs
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\App.g.cs
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin_MarkupCompile.cache
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin_MarkupCompile.lref
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\Login.baml
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\MainWindow.baml
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.g.resources
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.Properties.Resources.resources
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.csproj.GenerateResource.cache
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.exe
+C:\Users\I'M A BITCH\Documents\GitHub\CanTinCNPM\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.pdb
