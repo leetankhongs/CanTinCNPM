@@ -30,7 +30,7 @@ namespace QuanLyCanTin
         private DBConnect() { }
 
         // Tùy máy thì connectionSTR khác nhau
-        private string connectionSTR = @"Data Source=.;Initial Catalog = QUANLYCANTIN; Integrated Security = true;";
+        private string connectionSTR = @"Data Source=MAYTINH-SU3250A\SQLEXPRESS;Initial Catalog = QUANLYCANTIN; Integrated Security = true;";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

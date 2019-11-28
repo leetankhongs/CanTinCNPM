@@ -28,11 +28,11 @@ namespace QuanLyCanTin
 
         private SanPhamDAO() { }
 
-        public List<SanPham> GetFoodByCategoryID(int id)
+        public List<SanPham> GetFoodByCategoryID(int idCategory)
         {
             List<SanPham> list = new List<SanPham>();
 
-            string query = "select * from SanPham where LoaiSanPham = " + id;
+            string query = "SELECT * FROM SanPham WHERE LoaiSanPham = " + idCategory;
 
             DataTable data = DBConnect.Instance.ExecuteQuery(query);
 
@@ -49,7 +49,7 @@ namespace QuanLyCanTin
         {
             List<SanPham> list = new List<SanPham>();
 
-            string query = "select * from SanPham";
+            string query = "SELECT * FROM SanPham";
 
             DataTable data = DBConnect.Instance.ExecuteQuery(query);
 
@@ -59,7 +59,7 @@ namespace QuanLyCanTin
                 list.Add(sp);
             }
 
-            MessageBox.Show("Get data successfully!!!");
+            MessageBox.Show("Get SANPHAM data successfully!!!");
 
             return list;
         }
@@ -68,22 +68,22 @@ namespace QuanLyCanTin
         {
             List<SanPham> list = new List<SanPham>();
 
-            string query = string.Format("SELECT * FROM SanPham WHERE dbo.fuConvertToUnsign1(TenSanPham) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
+            //string query = string.Format("SELECT * FROM SanPham WHERE dbo.fuConvertToUnsign1(TenSanPham) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
 
-            DataTable data = DBConnect.Instance.ExecuteQuery(query);
+            //DataTable data = DBConnect.Instance.ExecuteQuery(query);
 
-            foreach (DataRow item in data.Rows)
-            {
-                SanPham sp = new SanPham(item);
-                list.Add(sp);
-            }
+            //foreach (DataRow item in data.Rows)
+            //{
+            //    SanPham sp = new SanPham(item);
+            //    list.Add(sp);
+            //}
 
             return list;
         }
 
         public bool InsertFood(string id, string name, string categoryID, int price, string imgUrl, bool isFavourite, bool isDelete)
         {
-            string query = string.Format("INSERT SanPham (MaSanPham, TenSanPham, LoaiSanPham, ImgUrl, Gia, YeuThich, isDelete)VALUES({0}, N'{1}', {2}, {3}, {4}, {5}, {6})", id, name, categoryID, imgUrl, price, isFavourite, isDelete);
+            string query = string.Format("INSERT INTO SanPham (MaSanPham, TenSanPham, LoaiSanPham, ImgUrl, Gia, YeuThich, isDelete)VALUES({0}, N'{1}', {2}, {3}, {4}, {5}, {6})", id, name, categoryID, imgUrl, price, isFavourite, isDelete);
             int result = DBConnect.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -99,7 +99,7 @@ namespace QuanLyCanTin
 
         public bool DeleteFood(int id)
         {
-            string query = string.Format("Delete SanPham where MaSanPham = {0}", id);
+            string query = string.Format("DELETE FROM SanPham WHERE MaSanPham = {0}", id);
             int result = DBConnect.Instance.ExecuteNonQuery(query);
 
             return result > 0;
