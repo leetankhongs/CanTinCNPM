@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyCanTin
 {
-    class NhanVienDAO
+    public class NhanVienDAO
     {
         private static NhanVienDAO instance;
 

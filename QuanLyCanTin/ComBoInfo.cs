@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyCanTin
 {
-    class ComBoInfo
+    public class ComBoInfo
     {
         private string maComBo;
 

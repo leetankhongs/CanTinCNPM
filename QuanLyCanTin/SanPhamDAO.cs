@@ -28,23 +28,6 @@ namespace QuanLyCanTin
 
         private SanPhamDAO() { }
 
-        public List<SanPham> GetFoodByCategoryID(int idCategory)
-        {
-            List<SanPham> list = new List<SanPham>();
-
-            string query = "SELECT * FROM SanPham WHERE LoaiSanPham = " + idCategory;
-
-            DataTable data = DBConnect.Instance.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
-            {
-                SanPham sp = new SanPham(item);
-                list.Add(sp);
-            }
-
-            return list;
-        }
-
         public List<SanPham> GetListFood()
         {
             List<SanPham> list = new List<SanPham>();

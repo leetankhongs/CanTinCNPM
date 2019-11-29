@@ -30,8 +30,9 @@ namespace QuanLyCanTin
         private DBConnect() { }
 
         // Tùy máy thì connectionSTR khác nhau
-        private string connectionSTR = @"Data Source=.;Initial Catalog = QUANLYCANTIN; Integrated Security = true;";
+        private string connectionSTR = @"Data Source=MAYTINH-SU3250A\SQLEXPRESS;Initial Catalog = QUANLYCANTIN; Integrated Security = true;";
 
+        // trả về 1 table
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
@@ -66,6 +67,7 @@ namespace QuanLyCanTin
             return data;
         }
 
+        // trả về số dòng bị ảnh hưởng
         public int ExecuteNonQuery(string query, object[] parameter = null)
         {
             int data = 0;
@@ -98,6 +100,7 @@ namespace QuanLyCanTin
             return data;
         }
 
+        // trả về 1 giá trị
         public object ExecuteScalar(string query, object[] parameter = null)
         {
             object data = 0;

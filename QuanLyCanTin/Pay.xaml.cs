@@ -22,6 +22,7 @@ namespace QuanLyCanTin
     public partial class Pay : Window
     {
         public BindingList<ProductOder> listOrder;
+
         public Pay(BindingList<ProductOder> listOrder)
         {
             this.listOrder = listOrder;
@@ -40,6 +41,34 @@ namespace QuanLyCanTin
 
         private void Paybtn_Click(object sender, RoutedEventArgs e)
         {
+            // lưu lịch sử thanh toán ở đây: lưu vào HoaDon và ChiTietHoaDon
+            string nextBillID = HoaDonDAO.Instance.getNextID();
+            int nextSTT = HoaDonDAO.Instance.getNextSTT();
+
+            // Tìm cách lấy mã nhân viên đang đăng nhập
+            string accountID = "NV000001";
+            
+            bool check = HoaDonDAO.Instance.InsertBill(nextBillID, nextSTT, DateTime.Now, listOrder[0].Total, accountID);
+            if (check)
+            {
+                MessageBox.Show("Thêm hóa đơn vào cơ sở dữ liệu thành công!!!");
+            }
+
+            List<string> listProductOrderID = new List<string>();
+            List<int> listProductOrderCount = new List<int>();
+
+            for (int i = 0; i < listOrder.Count; i++)
+            {
+                listProductOrderCount.Add(listOrder[i].Count);
+                listProductOrderID.Add(listOrder[i].CodeProduct);
+            }
+
+            check = HoaDonInfoDAO.Instance.InsertBillInfo(nextBillID, listProductOrderID, listProductOrderCount);
+            if (check)
+            {
+                MessageBox.Show("Thêm chi tiết hóa đơn vào cơ sở dữ liệu thành công!!!");
+            }
+
             DialogResult = true;
             this.Close();
         }

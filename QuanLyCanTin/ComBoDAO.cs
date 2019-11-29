@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace QuanLyCanTin
 {
-    class ComBoDAO
+    public class ComBoDAO
     {
         private static ComBoDAO instance;
 
