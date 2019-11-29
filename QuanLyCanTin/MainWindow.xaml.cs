@@ -38,8 +38,14 @@ namespace QuanLyCanTin
         private void loadComBo()
         {
             dsComBo = ComBoDAO.Instance.GetListComBo();
-        }     
+        }
+        List<ComBoInfo> comBoInfos = new List<ComBoInfo>();
 
+        private void loadComBoInfo()
+        {
+            comBoInfos = ComBoInfoDAO.Instance.GetListComBoInfo();
+        }
+        int current = 0;
         public class ProductOder : INotifyPropertyChanged
         {
             private String _CodeProduct;
@@ -119,7 +125,7 @@ namespace QuanLyCanTin
             }
         }
 
-        public Border CreateItemProduct(String Uri, String Name, int stt)
+        public Border CreateItemProduct(String Uri, String Name, int stt, int type)
         {
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(Uri, UriKind.Relative));
@@ -140,7 +146,10 @@ namespace QuanLyCanTin
             button.BorderBrush = new SolidColorBrush(Colors.Transparent);
             button.Content = stackPanel;
             button.Tag = new Tuple<int>(stt);
-            button.Click += Button_Click;
+            if (type == 0)
+                button.Click += Button_Click;
+            else
+                button.Click += ButtonCombo_Click;
 
             Border border = new Border();
             border.Margin = new Thickness(0, 8, 0, 8);
@@ -154,9 +163,12 @@ namespace QuanLyCanTin
             return border;
         }
 
+
+
         //List<SanPham> listProduct = new List<SanPham>();
         BindingList<ProductOder> listProductOrder = new BindingList<ProductOder>();
         List<Border> listProductBorder = new List<Border>();
+
         int TotalMoney = 0;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -168,9 +180,10 @@ namespace QuanLyCanTin
                 this.Close();
                 return;
             }
-            
+
             loadSanPham();
             loadComBo();
+            loadComBoInfo();
 
             //MessageBox.Show(dsSanPham[0].TenSanPham + "\n" + dsSanPham[1].ImgUrl);
 
@@ -186,17 +199,45 @@ namespace QuanLyCanTin
             //    MessageBox.Show("Mã combo: " + dsComBo[i].MaComBo + " - Tên combo: " + dsComBo[i].TenComBo + " - Giá combo: " + dsComBo[i].GiaComBo);
             //}
 
+
             for (int i = 0; i < dsSanPham.Count(); i++)
             {
-                if(dsSanPham[i].IsDelete == false)
+                if (dsSanPham[i].IsDelete == false)
                 {
-                    Border border = CreateItemProduct(dsSanPham[i].ImgUrl, dsSanPham[i].TenSanPham, i);
+                    Border border = CreateItemProduct(dsSanPham[i].ImgUrl, dsSanPham[i].TenSanPham, i, 0);
                     listProductBorder.Add(border);
                 }
+                current = i;
+            }
+            current += 1;
 
+            for (int i = current; i < dsComBo.Count + current; i++)
+            {
+                String URL = null;
+
+                for (int j = 0; j < comBoInfos.Count; j++)
+                    if (comBoInfos[j].MaComBo.CompareTo(dsComBo[i - current].MaComBo) == 0)
+                    {
+                        for (int k = 0; k < dsSanPham.Count; k++)
+                        {
+                            if (dsSanPham[k].MaSanPham.CompareTo(comBoInfos[j].MaSanPham) == 0)
+                            {
+                                URL = dsSanPham[k].ImgUrl;
+
+                                break;
+                            }
+
+                        }
+                        break;
+                    }
+
+                dsComBo[i - current].Image = URL;
+                Border border = CreateItemProduct(URL, dsComBo[i - current].TenComBo, i, 1);
+                listProductBorder.Add(border);
             }
 
-            int temp=0;
+
+            int temp = 0;
             for (int i = 0; i < dsSanPham.Count(); i++)
             {
                 if (dsSanPham[i].LoaiSanPham.CompareTo("002") == 0)
@@ -208,49 +249,107 @@ namespace QuanLyCanTin
 
             ListOrder.ItemsSource = listProductOrder;
         }
+        private void ButtonCombo_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var index = (button.Tag as Tuple<int>).Item1;
 
+
+            var screen = new DetailCombo(dsComBo[index - current]);
+
+            if (screen.ShowDialog() == true)
+            {
+                List<ProductOder> newList = new List<ProductOder>();
+
+                for (int i = 0; i < comBoInfos.Count; i++)
+                {
+                    if (comBoInfos[i].MaComBo.CompareTo(dsComBo[index - current].MaComBo) == 0)
+                    {
+                        for (int j = 0; j < dsSanPham.Count; j++)
+                        {
+                            if (comBoInfos[i].MaSanPham.CompareTo(dsSanPham[j].MaSanPham) == 0)
+                            {
+                                ProductOder productOrder = new ProductOder() { CodeProduct = dsSanPham[j].MaSanPham, Cost = dsSanPham[j].Gia, NameProduct = dsSanPham[j].TenSanPham, Count = 1, Total = dsSanPham[j].Gia };
+                                newList.Add(productOrder);
+                                break;
+                            }
+
+                        }
+                    }
+                }
+
+                for (int i = 0; i < newList.Count; i++)
+                {
+                    int indexOrder = 0;
+                    bool exist = false;
+                    for (int j = 0; j < listProductOrder.Count; j++)
+                    {
+                        if (newList[i].CodeProduct.CompareTo(listProductOrder[j].CodeProduct) == 0)
+                        {
+                            exist = true;
+                            indexOrder = j;
+                            break;
+                        }
+                    }
+
+                    if (exist == false)
+                    {
+                        listProductOrder.Add(newList[i]);
+                        TotalMoney += newList[i].Cost;
+                        TongTien.Text = TotalMoney.ToString();
+                    }
+                    else
+                    {
+                        listProductOrder[indexOrder].Count++;
+                        TotalMoney += listProductOrder[indexOrder].Cost;
+                        listProductOrder[indexOrder].Total += listProductOrder[indexOrder].Cost;
+                        TongTien.Text = TotalMoney.ToString();
+                    }
+                }
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var index = (button.Tag as Tuple<int>).Item1;
 
             bool exist = false;
-            int indexOrder = 0;
 
-
+            ProductOder tempProduct = new ProductOder();
             //var productOrder = new ProductOder();
-            var screen = new Detail(dsSanPham[index]);
+            var screen = new Detail(dsSanPham[index], tempProduct);
 
             if (screen.ShowDialog() == true)
             {
-                listProductOrder.Clear();
-                MessageBox.Show("Thanh toán thành công");
-            }
+                int indexOrder = 0;
 
-            for (int i = 0; i < listProductOrder.Count; i++)
-            {
-                if (dsSanPham[index].MaSanPham.CompareTo(listProductOrder[i].CodeProduct) == 0)
+                for (int i = 0; i < listProductOrder.Count; i++)
                 {
-                    exist = true;
-                    indexOrder = i;
-                    break;
+                    if (dsSanPham[index].MaSanPham.CompareTo(listProductOrder[i].CodeProduct) == 0)
+                    {
+                        exist = true;
+                        indexOrder = i;
+                        break;
+                    }
+                }
+
+                if (exist == false)
+                {
+                    ProductOder productOrder = new ProductOder() { CodeProduct = dsSanPham[index].MaSanPham, Cost = dsSanPham[index].Gia, NameProduct = dsSanPham[index].TenSanPham, Count = tempProduct.Count, Total = tempProduct.Count * dsSanPham[index].Gia };
+                    listProductOrder.Add(productOrder);
+                    TotalMoney += tempProduct.Count * dsSanPham[index].Gia;
+                    TongTien.Text = TotalMoney.ToString();
+                }
+                else
+                {
+                    listProductOrder[indexOrder].Count += tempProduct.Count;
+                    TotalMoney += tempProduct.Count * listProductOrder[indexOrder].Cost;
+                    listProductOrder[indexOrder].Total += tempProduct.Count * listProductOrder[indexOrder].Cost;
+                    TongTien.Text = TotalMoney.ToString();
                 }
             }
 
-            if (exist == false)
-            {
-                ProductOder productOrder = new ProductOder() { CodeProduct = dsSanPham[index].MaSanPham, Cost = dsSanPham[index].Gia, NameProduct = dsSanPham[index].TenSanPham, Count = 1, Total = dsSanPham[index].Gia };
-                listProductOrder.Add(productOrder);
-                TotalMoney += dsSanPham[index].Gia;
-                TongTien.Text = TotalMoney.ToString();
-            }
-            else
-            {
-                listProductOrder[indexOrder].Count++;
-                TotalMoney += listProductOrder[indexOrder].Cost;
-                listProductOrder[indexOrder].Total += listProductOrder[indexOrder].Cost;
-                TongTien.Text = TotalMoney.ToString();
-            }
+
 
         }
 
@@ -335,6 +434,16 @@ namespace QuanLyCanTin
             {
                 listProductOrder.Clear();
                 MessageBox.Show("Thanh toán thành công");
+            }
+        }
+
+        private void Combobtn_Click(object sender, RoutedEventArgs e)
+        {
+            Uni.Children.Clear();
+
+            for (int i = current; i < listProductBorder.Count; i++)
+            {
+                Uni.Children.Add(listProductBorder[i]);
             }
         }
     }
