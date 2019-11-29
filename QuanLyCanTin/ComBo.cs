@@ -32,6 +32,12 @@ namespace QuanLyCanTin
             get { return maComBo; }
             set { maComBo = value; }
         }
+        private string image;
+        public string Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
 
         public ComBo() { }
 
@@ -41,6 +47,8 @@ namespace QuanLyCanTin
             this.TenComBo = name;
             this.GiaComBo = price;
         }
+
+
 
         public ComBo(DataRow row)
         {
