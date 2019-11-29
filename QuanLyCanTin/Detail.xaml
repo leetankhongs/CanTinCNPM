@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyCanTin"
         mc:Ignorable="d"
-        Title="SẢN PHẨM" Height="250" Width="400">
+        Title="SẢN PHẨM" Height="250" Width="400" Loaded="Window_Loaded">
     <Grid>
-        <StackPanel Orientation="Horizontal">
-            <Image Margin="10 20 10 20" Width="200" Source="Images/comchien.jpeg"></Image>
+        <StackPanel Orientation="Horizontal" Name="Detail_st" >
+            <Image Margin="10 20 10 20" Width="200" Source="{Binding ImgUrl}" ></Image>
             <StackPanel Margin="5 10 10 10" Width="160" Orientation="Vertical">
-                <TextBlock Margin="0 0 0 5" Height="40" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold">Cơm sườn</TextBlock>
-                <TextBlock Margin="0 0 0 5" Height="40" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold">25000</TextBlock>
+                <TextBlock Margin="0 0 0 5" Height="40" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Text="{Binding TenSanPham}"></TextBlock>
+                <TextBlock Margin="0 0 0 5" Height="40" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold" Text="{Binding Gia}"></TextBlock>
                 <StackPanel Margin="0 5 0 5" Height="40" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Margin="5" Width="30" Background="White" BorderThickness="0">
                         <Image Width="15" Source="Images/minus.png"></Image>

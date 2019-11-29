@@ -11,17 +11,25 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static QuanLyCanTin.MainWindow;
 
 namespace QuanLyCanTin
 {
     /// <summary>
-    /// Interaction logic for Pay.xaml
+    /// Interaction logic for Detail.xaml
     /// </summary>
-    public partial class Pay : Window
+    public partial class Detail : Window
     {
-        public Pay()
+        public SanPham productOrder;
+        public Detail(SanPham productOder)
         {
+            this.productOrder = productOder;
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Detail_st.DataContext = productOrder;
         }
     }
 }

@@ -64,22 +64,22 @@ namespace QuanLyCanTin
             return list;
         }
 
-        //public List<SanPham> SearchFoodByName(string name)
-        //{
-        //    List<SanPham> list = new List<SanPham>();
+        public List<SanPham> SearchFoodByName(string name)
+        {
+            List<SanPham> list = new List<SanPham>();
 
-        //    string query = string.Format("SELECT * FROM SanPham WHERE dbo.convertInput(TenSanPham) LIKE N'%' + dbo.convertInput(N'{0}') + '%'", name);
+            //string query = string.Format("SELECT * FROM SanPham WHERE dbo.fuConvertToUnsign1(TenSanPham) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
 
-        //    DataTable data = DBConnect.Instance.ExecuteQuery(query);
+            //DataTable data = DBConnect.Instance.ExecuteQuery(query);
 
-        //    foreach (DataRow item in data.Rows)
-        //    {
-        //        SanPham sp = new SanPham(item);
-        //        list.Add(sp);
-        //    }
+            //foreach (DataRow item in data.Rows)
+            //{
+            //    SanPham sp = new SanPham(item);
+            //    list.Add(sp);
+            //}
 
-        //    return list;
-        //}
+            return list;
+        }
 
         public bool InsertFood(string id, string name, string categoryID, int price, string imgUrl, bool isFavourite, bool isDelete)
         {
