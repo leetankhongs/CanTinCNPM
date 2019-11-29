@@ -38,14 +38,7 @@ namespace QuanLyCanTin
         private void loadComBo()
         {
             dsComBo = ComBoDAO.Instance.GetListComBo();
-        }
-
-        // lấy danh sách chi tiết combo
-        List<ComBoInfo> dsChiTietComBo = new List<ComBoInfo>();
-        private void loadComBoInfo()
-        {
-            dsChiTietComBo = ComBoInfoDAO.Instance.GetListComBoInfo();
-        }
+        }     
 
         public class ProductOder : INotifyPropertyChanged
         {
@@ -178,7 +171,6 @@ namespace QuanLyCanTin
             
             loadSanPham();
             loadComBo();
-            loadComBoInfo();
 
             //MessageBox.Show(dsSanPham[0].TenSanPham + "\n" + dsSanPham[1].ImgUrl);
 
@@ -194,12 +186,6 @@ namespace QuanLyCanTin
             //    MessageBox.Show("Mã combo: " + dsComBo[i].MaComBo + " - Tên combo: " + dsComBo[i].TenComBo + " - Giá combo: " + dsComBo[i].GiaComBo);
             //}
 
-            //Test đọc hết dữ liệu COMBO INFO
-            //for (int i = 0; i < dsChiTietComBo.Count; i++)
-            //{
-            //    MessageBox.Show("Mã combo: " + dsChiTietComBo[i].MaComBo + " - Mã sản phẩm: " + dsChiTietComBo[i].MaSanPham);
-            //}
-
             for (int i = 0; i < dsSanPham.Count(); i++)
             {
                 if(dsSanPham[i].IsDelete == false)
@@ -210,10 +196,12 @@ namespace QuanLyCanTin
 
             }
 
+            int temp=0;
             for (int i = 0; i < dsSanPham.Count(); i++)
             {
-                if (dsSanPham[i].LoaiSanPham.CompareTo("001") == 0)
+                if (dsSanPham[i].LoaiSanPham.CompareTo("002") == 0)
                 {
+                    temp++;
                     Uni.Children.Add(listProductBorder[i]);
                 }
             }
@@ -228,6 +216,16 @@ namespace QuanLyCanTin
 
             bool exist = false;
             int indexOrder = 0;
+
+
+            //var productOrder = new ProductOder();
+            var screen = new Detail(dsSanPham[index]);
+
+            if (screen.ShowDialog() == true)
+            {
+                listProductOrder.Clear();
+                MessageBox.Show("Thanh toán thành công");
+            }
 
             for (int i = 0; i < listProductOrder.Count; i++)
             {
@@ -327,6 +325,17 @@ namespace QuanLyCanTin
             //    if (listProduct[i].NameProduct.Contains(textSearch))
             //        Uni.Children.Add(listProductBorder[i]);
             //}
+        }
+
+        private void Paybtn_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new Pay(listProductOrder);
+
+            if (screen.ShowDialog() == true)
+            {
+                listProductOrder.Clear();
+                MessageBox.Show("Thanh toán thành công");
+            }
         }
     }
 }
