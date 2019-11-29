@@ -196,10 +196,12 @@ namespace QuanLyCanTin
 
             }
 
+            int temp=0;
             for (int i = 0; i < dsSanPham.Count(); i++)
             {
-                if (dsSanPham[i].LoaiSanPham.CompareTo("001") == 0)
+                if (dsSanPham[i].LoaiSanPham.CompareTo("002") == 0)
                 {
+                    temp++;
                     Uni.Children.Add(listProductBorder[i]);
                 }
             }
@@ -313,6 +315,17 @@ namespace QuanLyCanTin
             //    if (listProduct[i].NameProduct.Contains(textSearch))
             //        Uni.Children.Add(listProductBorder[i]);
             //}
+        }
+
+        private void Paybtn_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new Pay(listProductOrder);
+
+            if (screen.ShowDialog() == true)
+            {
+                listProductOrder.Clear();
+                MessageBox.Show("Thanh toán thành công");
+            }
         }
     }
 }
