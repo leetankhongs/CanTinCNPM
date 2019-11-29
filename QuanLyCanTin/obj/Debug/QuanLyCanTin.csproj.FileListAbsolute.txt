@@ -1,0 +1,17 @@
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.exe.config
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.exe
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\bin\Debug\QuanLyCanTin.pdb
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.csprojResolveAssemblyReference.cache
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\Login.g.cs
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\MainWindow.g.cs
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\App.g.cs
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin_MarkupCompile.cache
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin_MarkupCompile.lref
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\Login.baml
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\MainWindow.baml
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.g.resources
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.Properties.Resources.resources
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.csproj.GenerateResource.Cache
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.csproj.CoreCompileInputs.cache
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.exe
+D:\Code\CanTinCNPM-master\QuanLyCanTin\QuanLyCanTin\obj\Debug\QuanLyCanTin.pdb
