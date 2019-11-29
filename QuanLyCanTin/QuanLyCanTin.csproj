@@ -156,13 +156,34 @@
     <Resource Include="Images\comnam.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\coca.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\minus.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\banhcanh.jpg" />
+    <Resource Include="Images\banhmi.jpg" />
+    <Resource Include="Images\bunbo.jpg" />
+    <Resource Include="Images\bungao.jpg" />
+    <Resource Include="Images\buoiep.jpg" />
+    <Resource Include="Images\carotep.jpg" />
+    <Resource Include="Images\chanhday.jpg" />
+    <Resource Include="Images\chanhmuoi.jpg" />
+    <Resource Include="Images\dame.jpg" />
+    <Resource Include="Images\hutieu.jpg" />
+    <Resource Include="Images\migoi.jpg" />
+    <Resource Include="Images\nuocloc.jpg" />
+    <Resource Include="Images\nuocmia.jpg" />
+    <Resource Include="Images\pepsi.jpg" />
+    <Resource Include="Images\rauma.jpg" />
+    <Resource Include="Images\samboluong.jpg" />
+    <Resource Include="Images\samdua.jpg" />
+    <Resource Include="Images\samduasua.jpg" />
+    <Resource Include="Images\sirosua.jpg" />
+    <Resource Include="Images\spaghetti.jpg" />
+    <Resource Include="Images\suachua.jpg" />
+    <Resource Include="Images\thomep.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
