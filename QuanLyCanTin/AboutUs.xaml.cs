@@ -23,5 +23,10 @@ namespace QuanLyCanTin
         {
             InitializeComponent();
         }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

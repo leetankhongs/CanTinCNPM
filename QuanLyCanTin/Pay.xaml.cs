@@ -22,9 +22,12 @@ namespace QuanLyCanTin
     public partial class Pay : Window
     {
         public BindingList<ProductOder> listOrder;
-        public Pay(BindingList<ProductOder> listOrder)
+        public String MaNV;
+
+        public Pay(BindingList<ProductOder> listOrder, String MaNV)
         {
             this.listOrder = listOrder;
+            this.MaNV = MaNV;
             InitializeComponent();
         }
 
@@ -40,6 +43,37 @@ namespace QuanLyCanTin
 
         private void Paybtn_Click(object sender, RoutedEventArgs e)
         {
+            // lưu lịch sử thanh toán ở đây: lưu vào HoaDon và ChiTietHoaDon
+            string nextBillID = HoaDonDAO.Instance.getNextID();
+            int nextSTT = HoaDonDAO.Instance.getNextSTT();
+
+            // Tìm cách lấy mã nhân viên đang đăng nhập
+            string accountID = this.MaNV;
+            int TotalMoney = 0;
+            for (int i = 0; i < listOrder.Count; i++)
+                TotalMoney += listOrder[i].Total;
+
+            bool check = HoaDonDAO.Instance.InsertBill(nextBillID, nextSTT, DateTime.Now, TotalMoney, accountID);
+            if (check)
+            {
+                MessageBox.Show("Thêm hóa đơn vào cơ sở dữ liệu thành công!!!");
+            }
+
+            List<string> listProductOrderID = new List<string>();
+            List<int> listProductOrderCount = new List<int>();
+
+            for (int i = 0; i < listOrder.Count; i++)
+            {
+                listProductOrderCount.Add(listOrder[i].Count);
+                listProductOrderID.Add(listOrder[i].CodeProduct);
+            }
+
+            check = HoaDonInfoDAO.Instance.InsertBillInfo(nextBillID, listProductOrderID, listProductOrderCount);
+            if (check)
+            {
+                MessageBox.Show("Thêm chi tiết hóa đơn vào cơ sở dữ liệu thành công!!!");
+            }
+
             DialogResult = true;
             this.Close();
         }

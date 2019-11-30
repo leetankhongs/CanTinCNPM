@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyCanTin"
         mc:Ignorable="d"
-        Title="ABOUT US" Height="800" Width="1280" ResizeMode="CanMinimize">
+        Title="ABOUT US" Height="800" Width="1280" ResizeMode="CanMinimize"  WindowStartupLocation="CenterScreen">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top"  Name="Header" Background="#FF3FB5FE" Height="50" >
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
+                <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0" Name="Home" Click="Home_Click">
                     <Image Source="/Images/home.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
                 <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">

@@ -67,6 +67,10 @@
     <Compile Include="DetailCombo.xaml.cs">
       <DependentUpon>DetailCombo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HoaDon.cs" />
+    <Compile Include="HoaDonDAO.cs" />
+    <Compile Include="HoaDonInfo.cs" />
+    <Compile Include="HoaDonInfoDAO.cs" />
     <Compile Include="NhanVien.cs" />
     <Compile Include="NhanVienDAO.cs" />
     <Compile Include="Pay.xaml.cs">

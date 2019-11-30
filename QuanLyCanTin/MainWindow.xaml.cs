@@ -170,9 +170,11 @@ namespace QuanLyCanTin
         List<Border> listProductBorder = new List<Border>();
 
         int TotalMoney = 0;
+        String MaNV = null;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             var screen = new Login();
 
             if (screen.ShowDialog() == false)
@@ -181,6 +183,7 @@ namespace QuanLyCanTin
                 return;
             }
 
+            MaNV = screen.MaNV;
             loadSanPham();
             loadComBo();
             loadComBoInfo();
@@ -428,7 +431,7 @@ namespace QuanLyCanTin
 
         private void Paybtn_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new Pay(listProductOrder);
+            var screen = new Pay(listProductOrder, MaNV);
 
             if (screen.ShowDialog() == true)
             {
@@ -445,6 +448,12 @@ namespace QuanLyCanTin
             {
                 Uni.Children.Add(listProductBorder[i]);
             }
+        }
+
+        private void AboutUs_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new AboutUs();
+            screen.ShowDialog();
         }
     }
 }

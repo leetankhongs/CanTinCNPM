@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyCanTin
 {
-    class NhanVienDAO
+    public class NhanVienDAO
     {
         private static NhanVienDAO instance;
 
@@ -37,6 +37,14 @@ namespace QuanLyCanTin
             DataTable result = DBConnect.Instance.ExecuteQuery(query, new object[] { username, password });
 
             return result.Rows.Count > 0;
+        }
+        public string getAccountIDByUsername(string username)
+        {
+            string query = "getAccountIDByUsername @username";
+
+            string result = (string)DBConnect.Instance.ExecuteScalar(query, new object[] { username });
+
+            return result;
         }
     }
 }

@@ -189,9 +189,55 @@ Insert into ChiTietComBo values
 	('CB003','SP00004'),
 	('CB003','SP00006');
 GO
+IF(OBJECT_ID(Login) IS NOT NULL)
+	DROP PROC Login
+GO
 CREATE PROC Login
 @userName nvarchar(30), @passWord nvarchar(100)
 AS
 BEGIN
 	SELECT * FROM NhanVien WHERE Username = @username AND Password = @password
+END
+
+----------------------------------------------
+GO
+IF(OBJECT_ID('insertBill', 'P') IS NOT NULL)
+	DROP PROC insertBill
+GO
+CREATE PROC insertBill
+	@id nvarchar(8),
+	@stt int,
+	@dateTime DateTime,
+	@total int,
+	@account nvarchar(8)
+AS
+BEGIN
+	INSERT INTO HoaDon (MaHoaDon, STT, ThoiGian, TongTien, NhanVien)
+	VALUES(@id, @stt, @dateTime, @total, @account)
+END
+
+
+--------------------------------------------------
+GO
+IF(OBJECT_ID('insertBillInfo', 'P') IS NOT NULL)
+	DROP PROC insertBillInfo
+GO
+CREATE PROC insertBillInfo
+	@billID nvarchar(8),
+	@productID nvarchar(8),
+	@sl int
+AS
+BEGIN
+	INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SL)
+	VALUES(@billID, @productID, @sl)
+END
+GO
+IF(OBJECT_ID('getAccountIDByUsername', 'P') IS NOT NULL)
+	DROP PROC getAccountIDByUsername
+GO
+CREATE PROC getAccountIDByUsername
+	@username varchar(30)
+AS
+BEGIN
+	SELECT MaNV FROM NhanVien WHERE Username = @username
 END

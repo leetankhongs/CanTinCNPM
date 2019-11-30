@@ -19,6 +19,7 @@ namespace QuanLyCanTin
     /// </summary>
     public partial class Login : Window
     {
+        public string MaNV;
         public Login()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace QuanLyCanTin
             string passWord = passwordBox.Password;
             if (login(userName, passWord))
             {
+                this.MaNV = NhanVienDAO.Instance.getAccountIDByUsername(userName);
                 MessageBox.Show("Đăng nhập thành công!!!");
                 DialogResult = true;
                 this.Close();
