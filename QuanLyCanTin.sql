@@ -233,3 +233,13 @@ BEGIN
 	INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SL)
 	VALUES(@billID, @productID, @sl)
 END
+GO
+IF(OBJECT_ID('getAccountIDByUsername', 'P') IS NOT NULL)
+	DROP PROC getAccountIDByUsername
+GO
+CREATE PROC getAccountIDByUsername
+	@username varchar(30)
+AS
+BEGIN
+	SELECT MaNV FROM NhanVien WHERE Username = @username
+END

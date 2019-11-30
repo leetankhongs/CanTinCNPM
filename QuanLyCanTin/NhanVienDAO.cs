@@ -38,5 +38,13 @@ namespace QuanLyCanTin
 
             return result.Rows.Count > 0;
         }
+        public string getAccountIDByUsername(string username)
+        {
+            string query = "getAccountIDByUsername @username";
+
+            string result = (string)DBConnect.Instance.ExecuteScalar(query, new object[] { username });
+
+            return result;
+        }
     }
 }

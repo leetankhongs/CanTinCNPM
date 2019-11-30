@@ -179,9 +179,11 @@ namespace QuanLyCanTin
         BindingList<ProductOder> listProductOrder = new BindingList<ProductOder>();
         List<Border> listProductBorder = new List<Border>();
         int TotalMoney = 0;
+        String MaNV = null;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             var screen = new Login();
 
             if (screen.ShowDialog() == false)
@@ -189,7 +191,8 @@ namespace QuanLyCanTin
                 this.Close();
                 return;
             }
-            
+              MessageBox.Show($"{screen.MaNV}");
+
             loadSanPham();
             loadComBo();
             loadComBoInfo();
