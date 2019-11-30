@@ -67,6 +67,9 @@
     <Compile Include="DetailCombo.xaml.cs">
       <DependentUpon>DetailCombo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="History.xaml.cs">
+      <DependentUpon>History.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HoaDon.cs" />
     <Compile Include="HoaDonDAO.cs" />
     <Compile Include="HoaDonInfo.cs" />
@@ -89,6 +92,10 @@
     <Page Include="DetailCombo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="History.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
