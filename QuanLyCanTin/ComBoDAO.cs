@@ -44,8 +44,6 @@ namespace QuanLyCanTin
                 list.Add(combo);
             }
 
-            MessageBox.Show("Get COMBO data successfully!!!");
-
             return list;
         }
     }

@@ -44,8 +44,6 @@ namespace QuanLyCanTin
                 list.Add(hd);
             }
 
-            MessageBox.Show("Get HOADON data successfully!!!");
-
             return list;
         }
 

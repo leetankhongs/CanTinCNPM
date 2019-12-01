@@ -44,8 +44,6 @@ namespace QuanLyCanTin
                 list.Add(cthd);
             }
 
-            MessageBox.Show("Get CHITIET HOADON data successfully!!!");
-
             return list;
         }
 

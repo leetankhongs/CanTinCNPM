@@ -14,7 +14,7 @@
                 <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
                     <Image Source="/Images/home.png" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
-                <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
+                <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0" Name="Order" Click="Order_Click">
                     <TextBlock Text="Order" FontSize="30" FontWeight="Bold"/>
                 </Button>
                 <Button Background="{x:Null}" BorderThickness="0"  Margin="50 0 0 0">
@@ -36,7 +36,7 @@
 
         <StackPanel DockPanel.Dock="Left"  Width="800" >
             <StackPanel Orientation="Horizontal" Height="40" Margin="0 10 0 5" >
-                <Button Width="200" BorderBrush="Black" BorderThickness="3">
+                <Button Width="200" BorderBrush="Black" BorderThickness="3" Name="Favoritebtn" Click="Favoritebtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/favorite.png" RenderOptions.BitmapScalingMode="HighQuality" Height="30" Width="30" Margin="0 0 20 0"/>
                         <TextBlock Text="YÊU THÍCH" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>

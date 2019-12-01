@@ -42,8 +42,6 @@ namespace QuanLyCanTin
                 list.Add(sp);
             }
 
-            MessageBox.Show("Get SANPHAM data successfully!!!");
-
             return list;
         }
     }

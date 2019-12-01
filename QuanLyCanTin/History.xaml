@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyCanTin"
         mc:Ignorable="d"
-        Title="History" Height="800" Width="1280">
+        Title="History" Height="800" Width="1280" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical">
             <DockPanel DockPanel.Dock="Top" Name="Header" Background="#FF3FB5FE" Height="50" >
@@ -32,18 +32,20 @@
                     </Button>
                 </StackPanel>
             </DockPanel>
-            <ListView >
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="STT" Width="150"/>
-                        <GridViewColumn Header="Mã Hóa Đơn" Width="250"/>
-                        <GridViewColumn Header="Thời Gian" Width="400"/>
-                        <GridViewColumn Header="Tổng Tiền" Width="235"/>
-                        <GridViewColumn Header="Nhân Viên" Width="235"/>
-                    </GridView>
-                </ListView.View>
+            <StackPanel Height="708" Margin="0,0,-0.4,0">
+                <ListView Name="ListBill" Height="705" Margin="0,0,-0.4,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="STT" Width="150" DisplayMemberBinding="{Binding STT}"/>
+                            <GridViewColumn Header="Mã Hóa Đơn" Width="250" DisplayMemberBinding="{Binding MaHoaDon}"/>
+                            <GridViewColumn Header="Thời Gian" Width="400" DisplayMemberBinding="{Binding ThoiGian}"/>
+                            <GridViewColumn Header="Tổng Tiền" Width="235" DisplayMemberBinding="{Binding TongTien}"/>
+                            <GridViewColumn Header="Nhân Viên" Width="200" DisplayMemberBinding="{Binding NhanVien}"/>
+                        </GridView>
+                    </ListView.View>
 
-            </ListView>
+                </ListView>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

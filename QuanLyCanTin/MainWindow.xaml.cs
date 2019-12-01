@@ -455,5 +455,27 @@ namespace QuanLyCanTin
             var screen = new AboutUs();
             screen.ShowDialog();
         }
+
+        private void Order_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new History();
+
+            if (screen.ShowDialog() == true)
+            {
+            }
+        }
+
+        private void Favoritebtn_Click(object sender, RoutedEventArgs e)
+        {
+            Uni.Children.Clear();
+
+            for (int i = 0; i < dsSanPham.Count(); i++)
+            {
+                if (dsSanPham[i].YeuThich == true)
+                {
+                    Uni.Children.Add(listProductBorder[i]);
+                }
+            }
+        }
     }
 }
