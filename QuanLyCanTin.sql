@@ -8,9 +8,11 @@ GO
 Create table NhanVien(
 	MaNV nvarchar(8) primary key not null,
 	HoTen nvarchar(32),
-	SDT nvarchar(11),
+	SDT varchar(11),
 	DiaChi nvarchar(100),
-	Luong Int
+	Luong int,
+	Username varchar(30),
+	Password varchar(100)
 );
 
 
@@ -63,6 +65,7 @@ alter table ChiTietHoaDon add constraint FK_SanPham_ChiTietHoaDon foreign key (M
 alter table ChiTietComBo add constraint FK_ComBo_ChiTietComBo foreign key (MaComBo) references ComBo(MaComBo);
 alter table ChiTietComBo add constraint FK_SanPham_ChiTietComBo foreign key (MaSanPham) references SanPham(MaSanPham);
 
+
 INSERT INTO LoaiSanPham(MaLoaiSP,TenLoaiSP)
 VALUES
 	('001', N'Thức ăn'),
@@ -70,38 +73,38 @@ VALUES
 
 
 Insert into NhanVien Values 
-	('NV000001','Lê Tấn Hưng','0963214587','135b Đường Trần Hưng Đạo, Phường Cầu Ông Lãnh, Quận 1, Hồ Chí Minh',5600000),
-	('NV000002','Lê Đào Nhật Thiện','0985214578','85 Đường Trần Hưng Đạo, Phường 7, Quận 5, Hồ Chí Minh',5600000),
-	('NV000003','Bùi Đỗ Huy','0932154754','12 Trường Chinh,Phường 12, Tân Bình, Hồ Chí Minh',5400000),
-	('NV000004','Phan Thị Hường','0912358746','36 Cao Thắng, phường 5, Quận 3, Hồ Chí Minh',6200000),
-	('NV000005','Nguyễn Thị Hồng','0952147584','25 Phạm Văn Đồng, Phường 3, Gò Vấp, Hồ Chí Minh',5800000);
+	('NV000001',N'Lê Tấn Hưng','0963214587',N'135b Đường Trần Hưng Đạo, Phường Cầu Ông Lãnh, Quận 1, Hồ Chí Minh',5600000,'hung123','hung123'),
+	('NV000002',N'Lê Đào Nhật Thiện','0985214578',N'85 Đường Trần Hưng Đạo, Phường 7, Quận 5, Hồ Chí Minh',5600000,'thien123','thien123'),
+	('NV000003',N'Bùi Đỗ Huy','0932154754',N'12 Trường Chinh,Phường 12, Tân Bình, Hồ Chí Minh',5400000,'huy123','huy123'),
+	('NV000004',N'Phan Thị Hường','0912358746',N'36 Cao Thắng, phường 5, Quận 3, Hồ Chí Minh',6200000,'huong123','huong123'),
+	('NV000005',N'Nguyễn Thị Hồng','0952147584',N'25 Phạm Văn Đồng, Phường 3, Gò Vấp, Hồ Chí Minh',5800000,'hong123','hong123');
 
 Insert into SanPham values
-	('SP00001','Cơm tự chọn loại 1','001','Images/IMG00001.jpeg',20000,0,0),
-	('SP00002','Cơm tự chọn loại 2','001','Images/IMG00002.jpeg',25000,0,0),
-	('SP00003','Mì Spaghetti','001','Images/IMG00003.jpeg',25000,0,0),
-	('SP00004','Hủ tiếu','001','Images/IMG00004.jpeg',25000,0,0),
-	('SP00005','Sting','002','Images/IMG00005.jpeg',10000,0,0),
-	('SP00006','Pepsi','002','Images/IMG00006.jpeg',8000,0,0),
-	('SP00007','Nước lọc','002','Images/IMG00007.jpeg',5000,0,0),
-	('SP00008','Nước mía','002','Images/IMG00008.jpeg',6000,0,0),
-	('SP00009','Bún bò Huế','001','Images/IMG00009.jpeg',30000,0,0),
-	('SP00010','Bánh Canh','001','Images/IMG000010.jpeg',25000,0,0),
-	('SP00011','Bún gạo','001','Images/IMG000011.jpeg',25000,0,0),
-	('SP00012','Mì gói thịt bò','001','Images/IMG000012.jpeg',30000,0,0),
-	('SP00013','Bánh mì ốp la','001','Images/IMG000013.jpeg',15000,0,0),
-	('SP00014','Sâm dứa','002','Images/IMG000014.jpeg',7000,0,0),
-	('SP00015','Nước cà rốt ép','002','Images/IMG000015.jpeg',15000,0,0),
-	('SP00016','Sâm dứa sữa','002','Images/IMG000016.jpeg',9000,0,0),
-	('SP00017','Chanh dây','002','Images/IMG000017.jpeg',6000,0,0),
-	('SP00018','Chanh muối','002','Images/IMG000018.jpeg',6000,0,0),
-	('SP00019','Nước đá me','002','Images/IMG000019.jpeg',6000,0,0),
-	('SP00020','Sâm bổ lưỡng','002','Images/IMG000020.jpeg',6000,0,0),
-	('SP00021','Siro sữa','002','Images/IMG000021.jpeg',9000,0,0),
-	('SP00022','Nước bưởi ép','002','Images/IMG000022.jpeg',18000,0,0),
-	('SP00023','Thơm ép','002','Images/IMG000023.jpeg',15000,0,0),
-	('SP00024','Sữa chua đá đường','002','Images/IMG000024.jpeg',8000,0,0),
-	('SP00025','Rau má đậu xanh','002','Images/IMG000025.jpeg',6000,0,0);
+	('SP00001',N'Cơm tự chọn loại 1','001','Images/comchien.jpeg',20000,0,0),
+	('SP00002',N'Cơm tự chọn loại 2','001','Images/comnam.jpeg',25000,0,0),
+	('SP00003',N'Mì Spaghetti','001','Images/spaghetti.jpg',25000,0,0),
+	('SP00004',N'Hủ tiếu','001','Images/hutieu.jpg',25000,0,0),
+	('SP00005',N'Sting','002','Images/sting.jpg',10000,0,0),
+	('SP00006',N'Pepsi','002','Images/pepsi.jpg',8000,0,0),
+	('SP00007',N'Nước lọc','002','Images/nuocloc.jpg',5000,0,0),
+	('SP00008',N'Nước mía','002','Images/nuocmia.jpg',6000,0,0),
+	('SP00009',N'Bún bò Huế','001','Images/bunbo.jpg',30000,0,0),
+	('SP00010',N'Bánh Canh','001','Images/banhcanh.jpg',25000,0,0),
+	('SP00011',N'Bún gạo','001','Images/bungao.jpg',25000,0,0),
+	('SP00012',N'Mì gói thịt bò','001','Images/migoi.jpg',30000,0,0),
+	('SP00013',N'Bánh mì ốp la','001','Images/banhmi.jpg',15000,0,0),
+	('SP00014',N'Sâm dứa','002','Images/samdua.jpg',7000,0,0),
+	('SP00015',N'Nước cà rốt ép','002','Images/carotep.jpg',15000,0,0),
+	('SP00016',N'Sâm dứa sữa','002','Images/samduasua.jpg',9000,0,0),
+	('SP00017',N'Chanh dây','002','Images/chanhday.jpg',6000,0,0),
+	('SP00018',N'Chanh muối','002','Images/chanhmuoi.jpg',6000,0,0),
+	('SP00019',N'Nước đá me','002','Images/dame.jpg',6000,0,0),
+	('SP00020',N'Sâm bổ lượng','002','Images/samboluong.jpg',6000,0,0),
+	('SP00021',N'Siro sữa','002','Images/sirosua.jpg',9000,0,0),
+	('SP00022',N'Nước bưởi ép','002','Images/buoiep.jpg',18000,0,0),
+	('SP00023',N'Thơm ép','002','Images/thomep.jpg',15000,0,0),
+	('SP00024',N'Sữa chua đá đường','002','Images/suachua.jpg',8000,0,0),
+	('SP00025',N'Rau má đậu xanh','002','Images/rauma.jpg',6000,0,0);
 
 Insert into HoaDon values
 	('HD000001',1,convert(datetime,'11:5 20/11/2019',103),25000,'NV000005'),
@@ -174,9 +177,9 @@ Insert into ChiTietHoaDon values
 	('HD000026','SP00022',1);
 
 Insert into ComBo values
-	('CB001','Spaghetti + Sting',35000),
-	('CB002','Cơm tự chọn loại 1 + Nước mía',26000),
-	('CB003','Hủ tiếu + Pepsi',33000);
+	('CB001',N'Spaghetti + Sting',35000),
+	('CB002',N'Cơm tự chọn loại 1 + Nước mía',26000),
+	('CB003',N'Hủ tiếu + Pepsi',33000);
 
 Insert into ChiTietComBo values
 	('CB001','SP00003'),
@@ -185,3 +188,56 @@ Insert into ChiTietComBo values
 	('CB002','SP00008'),
 	('CB003','SP00004'),
 	('CB003','SP00006');
+GO
+IF(OBJECT_ID(Login) IS NOT NULL)
+	DROP PROC Login
+GO
+CREATE PROC Login
+@userName nvarchar(30), @passWord nvarchar(100)
+AS
+BEGIN
+	SELECT * FROM NhanVien WHERE Username = @username AND Password = @password
+END
+
+----------------------------------------------
+GO
+IF(OBJECT_ID('insertBill', 'P') IS NOT NULL)
+	DROP PROC insertBill
+GO
+CREATE PROC insertBill
+	@id nvarchar(8),
+	@stt int,
+	@dateTime DateTime,
+	@total int,
+	@account nvarchar(8)
+AS
+BEGIN
+	INSERT INTO HoaDon (MaHoaDon, STT, ThoiGian, TongTien, NhanVien)
+	VALUES(@id, @stt, @dateTime, @total, @account)
+END
+
+
+--------------------------------------------------
+GO
+IF(OBJECT_ID('insertBillInfo', 'P') IS NOT NULL)
+	DROP PROC insertBillInfo
+GO
+CREATE PROC insertBillInfo
+	@billID nvarchar(8),
+	@productID nvarchar(8),
+	@sl int
+AS
+BEGIN
+	INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SL)
+	VALUES(@billID, @productID, @sl)
+END
+GO
+IF(OBJECT_ID('getAccountIDByUsername', 'P') IS NOT NULL)
+	DROP PROC getAccountIDByUsername
+GO
+CREATE PROC getAccountIDByUsername
+	@username varchar(30)
+AS
+BEGIN
+	SELECT MaNV FROM NhanVien WHERE Username = @username
+END
