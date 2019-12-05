@@ -1,4 +1,4 @@
-﻿GO
+GO
 CREATE DATABASE QUANLYCANTIN
 
 GO
@@ -66,18 +66,17 @@ alter table ChiTietComBo add constraint FK_ComBo_ChiTietComBo foreign key (MaCom
 alter table ChiTietComBo add constraint FK_SanPham_ChiTietComBo foreign key (MaSanPham) references SanPham(MaSanPham);
 
 
-INSERT INTO LoaiSanPham(MaLoaiSP,TenLoaiSP)
-VALUES
+INSERT INTO LoaiSanPham VALUES
 	('001', N'Thức ăn'),
 	('002', N'Nước uống')
 
 
 Insert into NhanVien Values 
-	('NV000001',N'Lê Tấn Hưng','0963214587',N'135b Đường Trần Hưng Đạo, Phường Cầu Ông Lãnh, Quận 1, Hồ Chí Minh',5600000,'hung123','hung123'),
-	('NV000002',N'Lê Đào Nhật Thiện','0985214578',N'85 Đường Trần Hưng Đạo, Phường 7, Quận 5, Hồ Chí Minh',5600000,'thien123','thien123'),
-	('NV000003',N'Bùi Đỗ Huy','0932154754',N'12 Trường Chinh,Phường 12, Tân Bình, Hồ Chí Minh',5400000,'huy123','huy123'),
-	('NV000004',N'Phan Thị Hường','0912358746',N'36 Cao Thắng, phường 5, Quận 3, Hồ Chí Minh',6200000,'huong123','huong123'),
-	('NV000005',N'Nguyễn Thị Hồng','0952147584',N'25 Phạm Văn Đồng, Phường 3, Gò Vấp, Hồ Chí Minh',5800000,'hong123','hong123');
+	('NV000001',N'Lê Tấn Hưng','0963214587',N'135b Đường Trần Hưng Đạo, Phường Cầu Ông Lãnh, Quận 1, Hồ Chí Minh',5600000,'hung123','135207232157214230604222416262062047659100'),
+	('NV000002',N'Lê Đào Nhật Thiện','0985214578',N'85 Đường Trần Hưng Đạo, Phường 7, Quận 5, Hồ Chí Minh',5600000,'thien123','17225219213317312114413020817024919615117311062'),
+	('NV000003',N'Bùi Đỗ Huy','0932154754',N'12 Trường Chinh,Phường 12, Tân Bình, Hồ Chí Minh',5400000,'huy123','1842204451402472222391762361063876147112'),
+	('NV000004',N'Phan Thị Hường','0912358746',N'36 Cao Thắng, phường 5, Quận 3, Hồ Chí Minh',6200000,'huong123','892368913123015218413019317961914621613589'),
+	('NV000005',N'Nguyễn Thị Hồng','0952147584',N'25 Phạm Văn Đồng, Phường 3, Gò Vấp, Hồ Chí Minh',5800000,'hong123','18624120810420721715714914715272791751761622');
 
 Insert into SanPham values
 	('SP00001',N'Cơm tự chọn loại 1','001','Images/comchien.jpeg',20000,1,0),
@@ -188,12 +187,15 @@ Insert into ChiTietComBo values
 	('CB002','SP00008'),
 	('CB003','SP00004'),
 	('CB003','SP00006');
+
+-----------------------------------------------------
 GO
-IF(OBJECT_ID(Login) IS NOT NULL)
+IF(OBJECT_ID('Login', 'P') IS NOT NULL)
 	DROP PROC Login
 GO
 CREATE PROC Login
-@userName nvarchar(30), @passWord nvarchar(100)
+	@userName nvarchar(30),
+	@passWord nvarchar(100)
 AS
 BEGIN
 	SELECT * FROM NhanVien WHERE Username = @username AND Password = @password
@@ -216,7 +218,6 @@ BEGIN
 	VALUES(@id, @stt, @dateTime, @total, @account)
 END
 
-
 --------------------------------------------------
 GO
 IF(OBJECT_ID('insertBillInfo', 'P') IS NOT NULL)
@@ -231,6 +232,8 @@ BEGIN
 	INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SL)
 	VALUES(@billID, @productID, @sl)
 END
+
+---------------------------------------------------------
 GO
 IF(OBJECT_ID('getAccountIDByUsername', 'P') IS NOT NULL)
 	DROP PROC getAccountIDByUsername
