@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -32,12 +32,23 @@ namespace QuanLyCanTin
 
         public bool Login(string username, string password)
         {
+            byte[] temp = ASCIIEncoding.ASCII.GetBytes(password);
+            byte[] hashData = new MD5CryptoServiceProvider().ComputeHash(temp);
+
+            string hashPass = "";
+
+            foreach (byte item in hashData)
+            {
+                hashPass += item;
+            }
+
             string query = "Login @username , @password";
 
-            DataTable result = DBConnect.Instance.ExecuteQuery(query, new object[] { username, password });
+            DataTable result = DBConnect.Instance.ExecuteQuery(query, new object[] { username, hashPass });
 
             return result.Rows.Count > 0;
         }
+		
         public string getAccountIDByUsername(string username)
         {
             string query = "getAccountIDByUsername @username";
