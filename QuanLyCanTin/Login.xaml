@@ -18,7 +18,7 @@
                 <PasswordBox x:Name="passwordBox" Height="30" FontSize="14" Width="250"/>
             </StackPanel>
             <StackPanel Margin="195,5,10,0" Orientation="Horizontal" Canvas.Top="35" Canvas.Left="10">
-                <Button Name="loginButton" Margin="0 0 5 0" Content="Đăng nhập" Width="80" Height="25" Click="loginButton_Click"></Button>
+                <Button Name="loginButton" Margin="0 0 5 0" Content="Đăng nhập" Width="80" Height="25" Click="loginButton_Click" IsDefault="True"></Button>
                 <Button Name="exitButton" Content="Thoát" Width="80" Height="25" Click="exitButton_Click"/>
             </StackPanel>
         </StackPanel>

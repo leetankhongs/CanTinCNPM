@@ -56,7 +56,7 @@ namespace QuanLyCanTin
             bool check = HoaDonDAO.Instance.InsertBill(nextBillID, nextSTT, DateTime.Now, TotalMoney, accountID);
             if (check)
             {
-                MessageBox.Show("Thêm hóa đơn vào cơ sở dữ liệu thành công!!!");
+                //MessageBox.Show("Thêm hóa đơn vào cơ sở dữ liệu thành công!!!");
             }
 
             List<string> listProductOrderID = new List<string>();
@@ -71,7 +71,7 @@ namespace QuanLyCanTin
             check = HoaDonInfoDAO.Instance.InsertBillInfo(nextBillID, listProductOrderID, listProductOrderCount);
             if (check)
             {
-                MessageBox.Show("Thêm chi tiết hóa đơn vào cơ sở dữ liệu thành công!!!");
+                //MessageBox.Show("Thêm chi tiết hóa đơn vào cơ sở dữ liệu thành công!!!");
             }
 
             DialogResult = true;

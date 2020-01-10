@@ -38,7 +38,7 @@ namespace QuanLyCanTin
 
         private void Reduce_Click(object sender, RoutedEventArgs e)
         {
-            if (this.tempProduct.Count > 0)
+            if (this.tempProduct.Count > 1)
                 this.tempProduct.Count--;
         }
 

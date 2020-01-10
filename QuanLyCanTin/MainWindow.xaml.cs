@@ -407,35 +407,38 @@ namespace QuanLyCanTin
         {
             String textSearch = Searchtb.Text;
 
+            if (textSearch == "")
+                return;
             Uni.Children.Clear();
 
             for (int i = 0; i < dsSanPham.Count; i++)
             {
-                if (dsSanPham[i].TenSanPham.Contains(textSearch))
+                if (dsSanPham[i].TenSanPham.ToLower().Contains(textSearch.ToLower()))
                     Uni.Children.Add(listProductBorder[i]);
             }
         }
 
         private void Searchtb_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            //String textSearch = Searchtb.Text;
-
-            //Uni.Children.Clear();
-
-            //for (int i = 0; i < listProduct.Count; i++)
-            //{
-            //    if (listProduct[i].NameProduct.Contains(textSearch))
-            //        Uni.Children.Add(listProductBorder[i]);
-            //}
+            
         }
 
         private void Paybtn_Click(object sender, RoutedEventArgs e)
         {
             var screen = new Pay(listProductOrder, MaNV);
 
+            if (listProductOrder.Count == 0)
+            {
+                MessageBox.Show("Hãy chọn món!!");
+                return;
+
+            }
+
             if (screen.ShowDialog() == true)
             {
                 listProductOrder.Clear();
+                TotalMoney = 0;
+                TongTien.Text = "";
                 MessageBox.Show("Thanh toán thành công");
             }
         }
